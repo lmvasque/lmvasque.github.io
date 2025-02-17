@@ -1,0 +1,16 @@
+---
+title: "Document-level Text Simplification with Coherence Evaluation."
+collection: publications
+category: conferences
+permalink: /publication/2023-09-08-coherence
+excerpt: 'We present a coherence-aware evaluation of document-level Text Simplification (TS), an approach that has not been considered in TS so far. We improve current TS sentence-based models to support a multi-sentence setting and the implementation of a state-of-the-art neural coherence model for simplification quality assessment. We enhanced English sentence simplification neural models for document-level simplification using 136,113 paragraph-level samples from both the general and medical domains to generate multiple sentences. Additionally, we use document-level simplification, readability and coherence metrics for evaluation. Our contributions include the introduction of coherence assessment into simplification evaluation with the automatic evaluation of 34,052 simplifications, a fine-tuned state-of-the-art model for document-level simplification, a coherence-based analysis of our results and a human evaluation of 300 samples that demonstrates the challenges encountered when moving towards document-level simplification.'
+date: 2023-09-08
+venue: 'In Proceedings of the Second Workshop on Text Simplification, Accessibility, and Readability (TSAR-2023). Varna, Bulgaria. Recent Advances in Natural Language Processing (RANLP 2023).'
+paperurl: 'https://aclanthology.org/2023.tsar-1.9/'
+citation: 'Vásquez-Rodríguez, L., Shardlow, M., Przybyła, P., and Ananiadou, S. 2023. Document-level Text Simplification with Coherence Evaluation. In Proceedings of the Second Workshop on Text Simplification, Accessibility, and Readability (TSAR-2023). Varna, Bulgaria. Recent Advances in Natural Language Processing (RANLP 2023).'
+---
+We present a coherence-aware evaluation of document-level Text Simplification (TS), an approach that has not been considered in TS so far. We improve current TS sentence-based models to support a multi-sentence setting and the implementation of a state-of-the-art neural coherence model for simplification quality assessment. We enhanced English sentence simplification neural models for document-level simplification using 136,113 paragraph-level samples from both the general and medical domains to generate multiple sentences. Additionally, we use document-level simplification, readability and coherence metrics for evaluation. Our contributions include the introduction of coherence assessment into simplification evaluation with the automatic evaluation of 34,052 simplifications, a fine-tuned state-of-the-art model for document-level simplification, a coherence-based analysis of our results and a human evaluation of 300 samples that demonstrates the challenges encountered when moving towards document-level simplification.
+
+[Download paper here](https://aclanthology.org/2023.tsar-1.9/)
+
+Recommended citation: Vásquez-Rodríguez, L., Shardlow, M., Przybyła, P., and Ananiadou, S. 2023. Document-level Text Simplification with Coherence Evaluation. In Proceedings of the Second Workshop on Text Simplification, Accessibility, and Readability (TSAR-2023). Varna, Bulgaria. Recent Advances in Natural Language Processing (RANLP 2023).
