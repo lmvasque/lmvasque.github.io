@@ -1,0 +1,45 @@
+---
+layout: archive
+title: "Awards"
+permalink: /awards/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% comment %}
+  Content lives in _data/awards.yml, not in a collection: awards have no page of
+  their own, so a data file avoids a file per entry. Reuses the .pub classes from
+  _sass/layout/_publications.scss so the three list pages look the same.
+{% endcomment %}
+
+{% assign awards = site.data.awards | sort: 'date' | reverse %}
+{% assign award_years = awards | group_by_exp: "award", "award.date | date: '%Y'" %}
+
+{% for award_year in award_years %}
+  <section class="pub__group" data-year="{{ award_year.name }}">
+    <h2 class="pub__year">{{ award_year.name }}</h2>
+    {% for award in award_year.items %}
+      <div class="list__item">
+        <article class="archive__item pub">
+          <h3 class="archive__item-title pub__title">
+            {% if award.url %}
+              <a href="{{ award.url }}">{{ award.title }}</a>
+            {% else %}
+              {{ award.title }}
+            {% endif %}
+          </h3>
+          <p class="pub__meta">
+            {% if award.type %}
+              <span class="pub__tag pub__tag--{{ award.type }}">{{ award.type }}</span>
+            {% endif %}
+            <span class="pub__venue">{{ award.org }}{% if award.when %} &middot; {{ award.when }}{% endif %}</span>
+          </p>
+          {% if award.description %}
+            <p class="pub__note">{{ award.description }}</p>
+          {% endif %}
+        </article>
+      </div>
+    {% endfor %}
+  </section>
+{% endfor %}

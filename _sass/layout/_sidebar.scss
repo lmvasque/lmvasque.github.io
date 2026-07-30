@@ -45,9 +45,13 @@
     font-size: $type-size-5;
   }
 
+  /* $pub-meta from layout/_publications.scss, which holds the shared UI type
+     scale, so the sidebar moves with the list pages instead of drifting from
+     them. Was $type-size-6 (12px), which also capped the profile links: they
+     are set to 1em, and em resolves against this rule, not the body. */
   p, li {
     font-family: $sans-serif;
-    font-size: $type-size-6;
+    font-size: $pub-meta;
     line-height: 1.5;
   }
 
@@ -125,7 +129,7 @@
 }
 .sidebar .author__name {
   font-family: $sans-serif;
-  font-size: $type-size-5;
+  font-size: $pub-title;
 }
 
 .sidebar .author__desktop {

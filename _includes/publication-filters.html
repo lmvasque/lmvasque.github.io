@@ -1,0 +1,59 @@
+{% comment %}
+  Client-side type filter for the publications page.
+
+  Progressive enhancement: the button bar is rendered with `hidden` and only
+  revealed here, so with JavaScript off the full list stays visible rather than
+  offering controls that cannot work.
+
+  Hiding uses the `hidden` attribute on each .list__item wrapper; year groups
+  hide themselves once they have no visible entries left.
+{% endcomment %}
+
+<script>
+(function () {
+  var bar = document.querySelector('[data-pub-filters]');
+  if (!bar) { return; }
+
+  var list = function (selector, root) {
+    return Array.prototype.slice.call((root || document).querySelectorAll(selector));
+  };
+
+  var items = list('.list__item[data-category]');
+  var groups = list('.pub__group');
+  var buttons = list('[data-filter]', bar);
+  var empty = document.querySelector('[data-pub-empty]');
+
+  if (!items.length) { return; }
+  bar.hidden = false;
+
+  function apply(filter) {
+    items.forEach(function (item) {
+      item.hidden = !(filter === 'all' || item.getAttribute('data-category') === filter);
+    });
+
+    var anyVisible = false;
+    groups.forEach(function (group) {
+      var visible = list('.list__item[data-category]', group).some(function (item) {
+        return !item.hidden;
+      });
+      group.hidden = !visible;
+      if (visible) { anyVisible = true; }
+    });
+
+    if (empty) { empty.hidden = anyVisible; }
+  }
+
+  bar.addEventListener('click', function (event) {
+    var button = event.target && event.target.closest && event.target.closest('[data-filter]');
+    if (!button) { return; }
+
+    buttons.forEach(function (other) {
+      var active = other === button;
+      other.classList.toggle('is-active', active);
+      other.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    apply(button.getAttribute('data-filter'));
+  });
+})();
+</script>

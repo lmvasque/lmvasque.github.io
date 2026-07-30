@@ -1,0 +1,24 @@
+---
+layout: archive
+title: "Education"
+permalink: /education/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% comment %}
+  Content lives in _data/cv.yml, sharing _includes/cv-entry.html with the
+  experience page. See that page for why layout: archive is used here.
+{% endcomment %}
+
+{% for study in site.data.cv.education %}
+  {% include cv-entry.html title=study.degree period=study.period org=study.org url=study.url location=study.location highlights=study.highlights %}
+{% endfor %}
+
+{% if site.data.cv.languages %}
+  <h2 class="pub__year">Languages</h2>
+  <ul class="chips">
+    {% for language in site.data.cv.languages %}<li class="chip">{{ language }}</li>{% endfor %}
+  </ul>
+{% endif %}

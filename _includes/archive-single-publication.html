@@ -1,0 +1,74 @@
+{% include base_path %}
+
+{% comment %}
+  One entry on the publications page. Used instead of archive-single.html so the
+  generic include stays untouched for posts, teaching and portfolio.
+
+  Citation and BibTeX travel in a data-clip attribute, read by copy-cite.html on
+  click. They cannot sit in an element's text: _layouts/default.html applies
+  `layout: compress`, which strips newlines site-wide and would flatten BibTeX
+  onto one line. Attribute values survive it, so newlines are encoded as &#10;
+  and the browser decodes them back when parsing.
+
+  The filter chain: `citation` stores "&amp;" by front-matter convention, so
+  that is restored to "&" before `escape` re-encodes the value for attribute
+  use; newline_to_br + replace turns real newlines into &#10;, and
+  strip_newlines drops the literal ones newline_to_br leaves behind.
+
+  data-category on the wrapper is what the filter buttons in
+  publication-filters.html match on.
+{% endcomment %}
+
+{% assign cat = site.publication_category[post.category] %}
+
+<div class="list__item" data-category="{{ post.category }}">
+  <article class="archive__item pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+
+    <h3 class="archive__item-title pub__title" itemprop="headline">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" itemprop="url">{{ post.title }}</a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
+      {% endif %}
+    </h3>
+
+    {% if post.authors %}
+      {% capture own_name %}<strong>{{ site.author.name }}</strong>{% endcapture %}
+      <p class="pub__authors">{{ post.authors | replace: site.author.name, own_name }}</p>
+    {% endif %}
+
+    <p class="pub__meta">
+      {% if cat %}
+        <span class="pub__tag pub__tag--{{ post.category }}">{{ cat.label | default: cat.title }}</span>
+      {% endif %}
+      {% if post.badge %}
+        <span class="pub__badge">{{ post.badge }}</span>
+      {% endif %}
+      <span class="pub__venue" itemprop="publisher">{{ post.venue }}</span>
+    </p>
+
+    {% if post.excerpt %}
+      <details class="pub__abstract">
+        <summary class="pub__summary">Abstract</summary>
+        <div class="pub__abstract-body" itemprop="abstract">{{ post.excerpt | markdownify }}</div>
+      </details>
+    {% endif %}
+
+    <p class="pub__actions">
+      {% if post.paperurl %}<a class="btn btn--pub btn--pub-primary" href="{{ post.paperurl }}">Paper</a>{% endif %}
+      {% if post.slidesurl %}<a class="btn btn--pub" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+      {% if post.posterurl %}<a class="btn btn--pub" href="{{ post.posterurl }}">Poster</a>{% endif %}
+      {% if post.videourl %}<a class="btn btn--pub" href="{{ post.videourl }}">Video</a>{% endif %}
+      {% if post.codeurl %}<a class="btn btn--pub" href="{{ post.codeurl }}">Code</a>{% endif %}
+      {% if post.citation %}
+        {% assign cite_text = post.citation | replace: '&amp;', '&' | escape | newline_to_br | replace: '<br />', '&#10;' | strip_newlines %}
+        <button type="button" class="btn btn--pub btn--pub-quiet" data-clip="{{ cite_text }}">Cite</button>
+      {% endif %}
+      {% if post.bibtex %}
+        {% assign bib_text = post.bibtex | replace: '&amp;', '&' | escape | newline_to_br | replace: '<br />', '&#10;' | strip_newlines %}
+        <button type="button" class="btn btn--pub btn--pub-quiet" data-clip="{{ bib_text }}">BibTeX</button>
+      {% endif %}
+    </p>
+
+  </article>
+</div>

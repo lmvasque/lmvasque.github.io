@@ -1,0 +1,77 @@
+{% comment %}
+  Copy-to-clipboard for the Cite / BibTeX buttons. Include once per page.
+
+  Inline on purpose: assets/js/main.min.js is a committed build artifact and
+  assets/js/_main.js is excluded from the Jekyll build, so editing the JS
+  sources would also require running `npm run build:js` and committing the
+  rebuilt bundle. This keeps the feature self-contained.
+
+  A button carries the text to copy in data-clip; the browser has already
+  decoded the &#10; newline entities by the time JavaScript reads it. One
+  delegated listener covers every button on the page.
+
+  Use /* */ comments only, never //. `layout: compress` strips newlines from
+  the whole page, including this script, so a // comment silently comments out
+  the entire remainder of the file and the buttons stop responding.
+{% endcomment %}
+
+<script>
+(function () {
+  var RESET_DELAY = 2000;
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    /* Fallback for insecure origins and older browsers. */
+    return new Promise(function (resolve, reject) {
+      var field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.left = '-9999px';
+      document.body.appendChild(field);
+      field.select();
+      try {
+        document.execCommand('copy') ? resolve() : reject(new Error('copy rejected'));
+      } catch (err) {
+        reject(err);
+      } finally {
+        document.body.removeChild(field);
+      }
+    });
+  }
+
+  document.addEventListener('click', function (event) {
+    var button = event.target && event.target.closest && event.target.closest('[data-clip]');
+    if (!button) { return; }
+
+    var payload = button.getAttribute('data-clip');
+    if (!payload) { return; }
+
+    /* Remember the original label the first time this button is used. */
+    var label = button.getAttribute('data-label');
+    if (label === null) {
+      label = button.textContent;
+      button.setAttribute('data-label', label);
+    }
+
+    if (button.dataset.resetTimer) {
+      window.clearTimeout(Number(button.dataset.resetTimer));
+    }
+
+    copyText(payload.trim()).then(function () {
+      button.textContent = 'Copied ✓';
+      button.classList.add('is-copied');
+    }, function () {
+      button.textContent = 'Copy failed';
+    });
+
+    button.dataset.resetTimer = window.setTimeout(function () {
+      button.textContent = label;
+      button.classList.remove('is-copied');
+      delete button.dataset.resetTimer;
+    }, RESET_DELAY);
+  });
+})();
+</script>

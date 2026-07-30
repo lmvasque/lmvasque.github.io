@@ -1,0 +1,40 @@
+# Awards and honours, rendered by _pages/awards.html.
+# `date` drives the sort order (newest first); `when` is what gets displayed.
+# `org` is the awarding body. `type` selects the tag label and its colour,
+# styled by .pub__tag--<type> in _sass/layout/_publications.scss.
+# `url` is optional.
+
+- title: "Outstanding Reviewer Award"
+  org: "EACL 2026, Annual Conference of the European Chapter of the Association for Computational Linguistics"
+  type: award
+  date: 2026-05-01
+  when: "May 2026"
+  description: "Awarded for high-quality peer review contributions."
+
+- title: "Associate Fellow, Advance HE (Higher Education Academy)"
+  org: "University of Manchester, United Kingdom"
+  type: certification
+  date: 2021-06-01
+  when: "June 2021"
+  description: "Recognised for contributions to teaching and learning support in higher education, meeting UK professional standards."
+
+- title: "Kilburn Scholarship"
+  org: "University of Manchester, United Kingdom"
+  type: scholarship
+  date: 2019-12-01
+  when: "December 2019"
+  description: "Competitive scholarship worth approximately £114,000, covering tuition fees and an annual stipend."
+
+- title: "Train the Trainers programme"
+  org: "Intel, Team4Tech and CARE"
+  type: grant
+  date: 2018-12-01
+  when: "December 2018"
+  description: "Selected as Costa Rica's national representative to support out-of-school girls in Malawi. The project contributed 945 volunteer hours from a team of 8 volunteers, and a $160,000 donation to local communities."
+
+- title: "Winners of Wonder programme"
+  org: "Intel Costa Rica"
+  type: grant
+  date: 2018-06-01
+  when: "June 2018"
+  description: "Awarded a $5,000 grant for leading the Experimenting with Science and Technology STEM project."

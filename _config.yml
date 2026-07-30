@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Laura Vásquez-Rodríguez"
 title_separator          : "-"
 name                     : &name "Laura Vásquez-Rodríguez"
-description              : &description "Postdoctoral Researcher"
+description              : &description "Full Stack AI Engineer"
 url                      : https://lmvasque.github.io/  # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "lmvasque/lmvasque.github.io"
@@ -22,13 +22,13 @@ repository               : "lmvasque/lmvasque.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "laura-vasquez-1.jpg"
+  avatar           : "laura-vasquez-2.jpg"
   name             : "Laura Vásquez-Rodríguez"
   pronouns         : # example: "she/her"  
-  bio              : "Postdoctoral Researcher | Multilinguality | NLP4HR | Text Simplification"
-  location         : "Martigny, Switzerland"
-  employer         : "Idiap Research Institute"
-  uri              : "https://lmvasque.github.io/"
+  bio              : "Full Stack AI Engineer | NLP &amp; LLMs | Machine Learning | Multilinguality"
+  location         : "Basel, Switzerland"
+  employer         : "Doodle AG"
+  uri              : # Redundant in the sidebar: this *is* the website.
   email            : "lvasquezcr@gmail.com" 
 
   # Academic websites
@@ -67,7 +67,7 @@ author:
   steam            : # Username
   telegram         : # URL
   tumblr           : # Username
-  twitter          : lmvasquezr
+  twitter          : # Username
   vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
@@ -76,13 +76,22 @@ author:
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings
+# `title` is the long form; `label` is the short tag shown next to each entry
+# on the publications page. A publication whose `category` is not listed here
+# still renders, it just gets no tag.
 publication_category:
-  books:
-    title: 'Papers'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Journal Articles'
+    label: 'Journal'
   conferences:
     title: 'Conference Papers'
+    label: 'Conference'
+  preprints:
+    title: 'Preprints'
+    label: 'Preprint'
+  thesis:
+    title: 'Thesis'
+    label: 'Thesis'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -90,33 +99,6 @@ breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
-talkmap_link             : false      #change to true to add link to talkmap on talks page
-comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
-  disqus:
-    shortname            :
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-staticman:
-  allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : "gh-pages" # "master", "gh-pages"
-  commitMessage          : "New comment."
-  filename               : comment-{@timestamp}
-  format                 : "yml"
-  moderation             : true
-  path                   : "_data/comments/{options.slug}"
-  requiredFields         : ['name', 'email', 'message']
-  transforms:
-    email                : "md5"
-  generatedFields:
-    date:
-      type               : "date"
-      options:
-        format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
   hide                   : false     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
@@ -158,6 +140,16 @@ include:
   - _pages
   - files
 exclude:
+  # Repo files that must not end up in the published site. Anything not listed
+  # here is copied to _site and served, including PDFs sitting at the root: the
+  # resume was on its way to being published at /Laura_Vasquez_Resume.pdf.
+  # Exclude such files by name. Do not use a "*.pdf" glob, it also strips
+  # files/slides/ and breaks every Slides and Poster link.
+  - Laura_Vasquez_Resume.pdf
+  - CLAUDE.md
+  - docker-compose.yaml
+  - _config_docker.yml
+  - scripts
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache
@@ -211,15 +203,10 @@ kramdown:
   enable_coderay: false
 
 
-# These settings control the types of collections used by the template
+# The two collections this site uses. One markdown file per item; the front
+# matter does the work. See CLAUDE.md for the fields each one supports.
 collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
   publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
     output: true
     permalink: /:collection/:path/
   talks:
@@ -227,19 +214,9 @@ collections:
     permalink: /:collection/:path/
 
 
-# These settings control how pages and collections are included in the site
+# Layout and options per content type. Change presentation for a whole
+# collection here rather than in the individual files.
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
   # _pages
   - scope:
       path: ""
@@ -247,15 +224,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
   # _publications
   - scope:
       path: ""
@@ -264,16 +232,6 @@ defaults:
       layout: single
       author_profile: true
       share: true
-      comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
   # _talks
   - scope:
       path: ""
@@ -292,8 +250,6 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-# paginate: 5 # amount of posts to show
-# paginate_path: /page:num/
 timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
@@ -301,7 +257,6 @@ timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 plugins:
   - jekyll-feed
   - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji
@@ -310,39 +265,9 @@ plugins:
 whitelist:
   - jekyll-feed
   - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji
-
-
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
 
 
 # HTML Compression

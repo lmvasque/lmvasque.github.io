@@ -1,0 +1,451 @@
+/* ==========================================================================
+   SHARED LIST UI
+   Used by the publications, talks and awards pages, and the interest chips on
+   the about page.
+
+   Type scale for these components, kept here so the whole set moves together.
+   The template's own $type-size-6 (0.75em) and -7 (0.6875em) are 12px and 11px
+   at this base, which is too small for secondary text, so these sit above them.
+   ========================================================================== */
+
+$pub-title: 1.1em; // ~18px  entry titles
+$pub-body: 0.9375em; // 15px   abstracts, award descriptions
+// Author lists are the width-critical line: the seven-author SwissText and
+// Data & Policy papers already fill ~89% of the content column at 12px, so this
+// is about as large as it goes before they wrap to a second line at desktop
+// width. Raise it to $pub-body if you would rather have the bigger text and
+// accept two lines on those entries.
+$pub-authors: 0.80em; // ~13.6px
+$pub-meta: 0.86em; // 14px   venue, year headings, intro
+$pub-label: 0.70em; // 13px   buttons, type tags, badges, toggles
+
+/* Muted text is set as the body colour at reduced opacity rather than with
+   --global-text-color-light. That variable resolves to #bdc1c4, roughly 2:1
+   against white, which is well under the 4.5:1 minimum. Opacity keeps a fixed
+   relationship to the text colour, so it stays legible in both themes.
+   Only applied to leaf elements: opacity creates a compositing group, and a
+   child cannot be more opaque than its parent. */
+$pub-muted: 0.72;
+$pub-muted-strong: 0.55; // decorative only, never body text
+
+/* ==========================================================================
+   CHIPS
+   Non-interactive labels, used for the research interests on the about page.
+   Deliberately not teal: they are not links, and colouring them like one
+   invites clicks that go nowhere.
+   ========================================================================== */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  margin: 0 0 1.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 0.3em 0.8em;
+  color: var(--global-text-color);
+  font-family: $sans-serif;
+  font-size: $pub-meta;
+  line-height: 1.4;
+  background-color: rgba(127, 127, 127, 0.08);
+  border: 1px solid var(--global-border-color);
+  border-radius: 2em;
+}
+
+/* ==========================================================================
+   PUBLICATIONS AND TALKS
+   Scannable list: one line per entry, detail collapsed behind <details>.
+   Shared by _includes/archive-single-publication.html and
+   _includes/archive-single-talk.html.
+
+   Colour carries meaning here, so it is rationed:
+     - the title is the darkest thing in the entry, and the entry point
+     - the accent colour marks the publication type, and nothing else
+     - link colour is reserved for the primary action (Paper)
+     - everything else is muted until hovered
+   ========================================================================== */
+
+.pub__intro {
+  margin-bottom: 1.25em;
+  color: var(--global-text-color);
+  font-size: $pub-meta;
+  opacity: $pub-muted;
+}
+
+/*
+   Type filter
+   ========================================================================== */
+
+.pub__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  margin-bottom: 1.25em;
+}
+
+.btn--filter {
+  &.is-active {
+    color: #fff !important;
+    background-color: var(--global-link-color);
+    border-color: var(--global-link-color) !important;
+  }
+}
+
+.pub__count {
+  margin-left: 0.2em;
+  font-size: 0.9em;
+  font-weight: normal;
+  opacity: 0.75;
+}
+
+.pub__empty {
+  padding: 1em 0;
+  color: var(--global-text-color);
+  font-size: $pub-meta;
+  font-style: italic;
+  opacity: $pub-muted;
+}
+
+/* Filtering toggles the hidden attribute; .list__item sets display, so this
+   has to win. */
+.list__item[hidden],
+.pub__group[hidden],
+[data-pub-filters][hidden],
+[data-pub-empty][hidden] {
+  display: none !important;
+}
+
+/*
+   Year heading
+   ========================================================================== */
+
+.pub__year {
+  margin: 1.75em 0 0.6em;
+  padding-bottom: 0.2em;
+  color: var(--global-text-color);
+  font-family: $sans-serif;
+  font-size: $pub-meta;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--global-border-color);
+  opacity: $pub-muted;
+
+  &:first-of-type {
+    margin-top: 0.75em;
+  }
+}
+
+/*
+   Entry
+   ========================================================================== */
+
+.pub {
+  position: relative;
+  /* Indented inside the year heading rather than pulled out with negative
+     margins, which would risk horizontal overflow on narrow screens. */
+  padding: 0.5em 0.6em 0.8em;
+  border-radius: $border-radius;
+  transition: background-color 0.15s ease-in-out;
+
+  /* Entries are separated by rhythm and the hover tint, not by rules: with
+     14 of them, a divider per entry made the page look like a table.
+     Neutral grey reads on both the light and the dark theme. */
+  &:hover {
+    background-color: rgba(127, 127, 127, 0.07);
+  }
+}
+
+.pub__title {
+  margin: 0 0 0.2em;
+  font-size: $pub-title;
+  font-weight: bold;
+  line-height: 1.35;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-link-color);
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Co-authors: readable but subordinate to the title, with her own name bolded
+   so it can be found at a glance in a seven-author list. Sized to keep that
+   list on one line at desktop width. */
+.pub__authors {
+  margin: 0 0 0.25em;
+  color: var(--global-text-color);
+  font-family: $sans-serif;
+  font-size: $pub-authors;
+  line-height: 1.5;
+}
+
+.pub__meta {
+  margin: 0 0 0.35em;
+  font-family: $sans-serif;
+  font-size: $pub-meta;
+  line-height: 1.5;
+}
+
+.pub__venue {
+  color: var(--global-text-color);
+  font-style: italic;
+  opacity: $pub-muted;
+}
+
+/* Highlight for the strongest venues. The only filled marker in the entry, so
+   it reads as an accolade rather than another label. */
+.pub__badge {
+  display: inline-block;
+  margin-right: 0.45em;
+  padding: 0.1em 0.5em;
+  color: #fff;
+  font-size: $pub-label;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  background-color: mix(#000, $info-color, 20%);
+  border-radius: $border-radius;
+}
+
+/*
+   Type marker
+   Plain coloured label rather than a boxed pill: the box competed with the
+   title for attention, and the colour alone is enough to tell the types apart.
+   ========================================================================== */
+
+.pub__tag {
+  font-size: $pub-label;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  /* Publications */
+  &--manuscripts { color: $info-color; }
+  &--conferences { color: mix(#000, $info-color, 20%); }
+  &--preprints   { color: mix(#000, $warning-color, 15%); }
+  &--thesis      { color: mix(#000, $success-color, 20%); }
+
+  /* Talks. Teal like the publication tags rather than the theme's grey
+     $notice-color, so the two list pages read as one system. */
+  &--talk        { color: mix(#000, $info-color, 20%); }
+
+  /* Experience and education: the date range sits in the tag slot. Not
+     uppercased, unlike the other tags, since it is data rather than a label —
+     which is also why it needs a larger font-size to look the same size: digits
+     and lowercase read smaller than capitals at identical em values. */
+  &--period {
+    color: mix(#000, $info-color, 20%);
+    font-size: $pub-authors;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  /* Awards */
+  &--award         { color: mix(#000, $info-color, 20%); }
+  &--certification { color: $info-color; }
+  &--scholarship   { color: mix(#000, $success-color, 20%); }
+  &--grant         { color: mix(#000, $warning-color, 15%); }
+
+  /* Separator before the venue. A pseudo-element, so dimming it here does not
+     touch the tag's own colour. */
+  &::after {
+    margin-left: 0.45em;
+    color: var(--global-text-color);
+    font-weight: normal;
+    letter-spacing: normal;
+    content: "\00B7";
+    opacity: $pub-muted-strong;
+  }
+}
+
+/*
+   Collapsible abstract
+   ========================================================================== */
+
+.pub__abstract {
+  margin: 0 0 0.35em;
+}
+
+.pub__summary {
+  display: inline-block;
+  color: var(--global-text-color);
+  font-family: $sans-serif;
+  font-size: $pub-label;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none; /* Firefox */
+  opacity: $pub-muted;
+  transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+
+  &::-webkit-details-marker {
+    display: none; /* Safari */
+  }
+
+  &:hover {
+    color: var(--global-link-color);
+    opacity: 1;
+  }
+
+  /* Caret, rotates when the entry is open. */
+  &::before {
+    display: inline-block;
+    margin-right: 0.35em;
+    content: "\25B8";
+    transition: transform 0.15s ease-in-out;
+  }
+}
+
+.pub__abstract[open] > .pub__summary {
+  opacity: 1;
+
+  &::before {
+    transform: rotate(90deg);
+  }
+}
+
+/* Role and degree detail on the experience page. Tight leading so a four-bullet
+   entry stays compact; `font-size: inherit` on the items because the theme
+   sizes list items independently. */
+.pub__highlights {
+  margin: 0.4em 0 0;
+  padding-left: 1.1em;
+  font-size: $pub-body;
+  line-height: 1.55;
+
+  li {
+    margin-bottom: 0.15em;
+    font-size: inherit;
+  }
+
+  /* Mid grey, not var(--global-border-color): that resolves to #f2f3f3 and the
+     bullets were effectively invisible. */
+  li::marker {
+    color: mix(#fff, $dark-gray, 40%);
+  }
+
+  /* Sub-bullets, e.g. the course list under "Relevant courses". */
+  ul {
+    margin: 0.2em 0 0.3em;
+    padding-left: 1.1em;
+    list-style-type: circle;
+  }
+}
+
+/* Short standing text (used for awards, where there is nothing to collapse). */
+.pub__note {
+  margin: 0;
+  color: var(--global-text-color);
+  font-size: $pub-body;
+  line-height: 1.6;
+}
+
+.pub__abstract-body {
+  margin: 0.4em 0 0.6em;
+  padding-left: 0.9em;
+  color: var(--global-text-color);
+  font-size: $pub-body;
+  line-height: 1.65;
+  border-left: 2px solid var(--global-border-color);
+
+  p {
+    margin: 0;
+    font-size: inherit;
+  }
+}
+
+/*
+   Action buttons
+   Three tiers: Paper is filled, Slides/Code are outlined, Cite/BibTeX stay
+   quiet until hovered. .btn hard-codes `color: #fff !important` and
+   `border: 0 !important`, so each override needs !important too.
+   ========================================================================== */
+
+.pub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  align-items: center;
+  margin: 0.5em 0 0;
+}
+
+.btn--pub {
+  margin-bottom: 0;
+  padding: 0.3em 0.8em;
+  color: var(--global-link-color) !important;
+  font-size: $pub-label;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  background-color: transparent;
+  border: 1px solid var(--global-border-color) !important;
+  transition: $global-transition;
+
+  &:hover,
+  &:focus-visible {
+    color: #fff !important;
+    background-color: var(--global-link-color);
+    border-color: var(--global-link-color) !important;
+  }
+
+  /* Primary action: the paper itself. */
+  &-primary {
+    color: #fff !important;
+    background-color: var(--global-link-color);
+    border-color: var(--global-link-color) !important;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--global-link-color-hover);
+      border-color: var(--global-link-color-hover) !important;
+    }
+  }
+
+  /* Utilities: present but not asking for attention. Muted via colour rather
+     than opacity, so the border stays crisp on hover. */
+  &-quiet {
+    color: mix(#fff, $dark-gray, 25%) !important;
+    border-color: transparent !important;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--global-link-color) !important;
+      background-color: transparent;
+      border-color: var(--global-border-color) !important;
+    }
+  }
+
+  &.is-copied,
+  &.is-copied:hover {
+    color: #fff !important;
+    background-color: $success-color;
+    border-color: $success-color !important;
+  }
+}
+
+/* The theme underlines every link inside .page__content, and that rule
+   (0,1,1) outranks .btn's own text-decoration:none (0,1,0), so the buttons
+   rendered as underlined links inside a box. Matching its specificity with
+   a.btn--pub and winning on source order — this partial is imported after
+   layout/page — is enough. */
+a.btn--pub,
+a.btn--pub:hover,
+a.btn--pub:focus-visible {
+  text-decoration: none;
+}
+
+/* Keyboard users need to see where they are. */
+.pub__summary:focus-visible,
+.btn--pub:focus-visible {
+  outline: 2px solid var(--global-link-color);
+  outline-offset: 2px;
+}

@@ -5,32 +5,54 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
+{% if site.author.googlescholar %}
+  <p class="pub__intro">You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.</p>
 {% endif %}
 
+{% comment %}
+  Grouped by year, newest first. Note this deliberately does not filter on
+  `category` the way the template's original loop did: there, a publication
+  whose category was not listed in site.publication_category disappeared from
+  the page without warning. Here `category` only picks the tag label and drives
+  the filter buttons.
+{% endcomment %}
 
+{% assign pubs = site.publications | sort: 'date' | reverse %}
+{% assign present = pubs | map: 'category' | uniq %}
 
+{% comment %}
+  One filter button per type that actually has entries, ordered as declared in
+  _config.yml rather than by first appearance. Without JavaScript the buttons
+  simply do not render, and the full list stays visible.
+{% endcomment %}
+<div class="pub__filters" data-pub-filters hidden>
+  <button type="button" class="btn btn--pub btn--filter is-active" data-filter="all" aria-pressed="true">
+    All <span class="pub__count">{{ pubs | size }}</span>
+  </button>
+  {% for entry in site.publication_category %}
+    {% if present contains entry[0] %}
+      {% assign count = pubs | where: 'category', entry[0] | size %}
+      <button type="button" class="btn btn--pub btn--filter" data-filter="{{ entry[0] }}" aria-pressed="false">
+        {{ entry[1].label | default: entry[1].title }} <span class="pub__count">{{ count }}</span>
+      </button>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% assign pub_years = pubs | group_by_exp: "pub", "pub.date | date: '%Y'" %}
+
+{% for pub_year in pub_years %}
+  <section class="pub__group" data-year="{{ pub_year.name }}">
+    <h2 class="pub__year">{{ pub_year.name }}</h2>
+    {% for post in pub_year.items %}
+      {% include archive-single-publication.html %}
+    {% endfor %}
+  </section>
+{% endfor %}
+
+<p class="pub__empty" data-pub-empty hidden>No publications of this type.</p>
+
+{% include copy-cite.html %}
+{% include publication-filters.html %}

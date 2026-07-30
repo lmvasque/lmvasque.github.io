@@ -1,0 +1,53 @@
+{% comment %}
+  One experience or education entry, shared by _pages/experience.html and
+  _pages/education.html so the two cannot drift apart. Data is in _data/cv.yml.
+
+  Reuses the .pub classes from _sass/layout/_publications.scss so these pages
+  match publications, talks and awards. The date range sits in the tag slot,
+  since it is the fact people scan for.
+
+  Parameters: title, period, org, url (optional), location (optional),
+  highlights (optional list), collapse (optional, truthy to put the highlights
+  behind a toggle — worth it for the long experience bullets, not for the one
+  or two lines each degree carries).
+
+  A highlight is normally a string. It may instead be a map with `text` and a
+  nested `items` list, which renders as sub-bullets (used for course lists).
+
+  Highlights are emitted unescaped, so an entry may contain a link.
+{% endcomment %}
+
+{% capture highlight_list %}<ul class="pub__highlights">
+  {%- for item in include.highlights -%}
+    {%- if item.text -%}
+      <li>{{ item.text }}
+        {%- if item.items -%}
+          <ul>{%- for sub in item.items -%}<li>{{ sub }}</li>{%- endfor -%}</ul>
+        {%- endif -%}
+      </li>
+    {%- else -%}
+      <li>{{ item }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>{% endcapture %}
+
+<div class="list__item">
+  <article class="archive__item pub">
+    <h3 class="archive__item-title pub__title">{{ include.title }}</h3>
+    <p class="pub__meta">
+      <span class="pub__tag pub__tag--period">{{ include.period }}</span>
+      <span class="pub__venue">{% if include.url %}<a href="{{ include.url }}">{{ include.org }}</a>{% else %}{{ include.org }}{% endif %}{% if include.location %} &middot; {{ include.location }}{% endif %}</span>
+    </p>
+
+    {% if include.highlights %}
+      {% if include.collapse %}
+        <details class="pub__abstract">
+          <summary class="pub__summary">Highlights</summary>
+          {{ highlight_list }}
+        </details>
+      {% else %}
+        {{ highlight_list }}
+      {% endif %}
+    {% endif %}
+  </article>
+</div>

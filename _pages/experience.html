@@ -1,0 +1,34 @@
+---
+layout: archive
+title: "Experience"
+permalink: /experience/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% comment %}
+  Content lives in _data/cv.yml. Uses layout: archive rather than single on
+  purpose: single wraps content in .page__content, where the theme's
+  `p { margin: 0 0 1.3em }` overrides the tighter spacing these entries use and
+  leaves large gaps between them.
+{% endcomment %}
+
+{% for job in site.data.cv.experience %}
+  {% include cv-entry.html title=job.role period=job.period org=job.org url=job.url location=job.location highlights=job.highlights collapse=true %}
+{% endfor %}
+
+{% if site.data.cv.service %}
+  <h2 class="pub__year">Leadership &amp; Service</h2>
+
+  {% for item in site.data.cv.service %}
+    {% include cv-entry.html title=item.role period=item.period org=item.org url=item.url location=item.location highlights=item.highlights %}
+  {% endfor %}
+{% endif %}
+
+{% if site.data.cv.skills %}
+  <h2 class="pub__year">Technical Skills</h2>
+  <ul class="chips">
+    {% for skill in site.data.cv.skills %}<li class="chip">{{ skill }}</li>{% endfor %}
+  </ul>
+{% endif %}
