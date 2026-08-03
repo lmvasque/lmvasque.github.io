@@ -1,7 +1,9 @@
-# Experience and education, rendered by _pages/experience.html.
-# Listed newest first; the order here is the order shown.
+# Experience, education and service, rendered by _pages/experience.html and
+# _pages/education.html. Listed newest first; the order here is the order shown.
 # `period` is display text, so write it however reads best.
 # `highlights` is optional and renders as a compact bullet list.
+#
+# Kept in sync with the LaTeX CV. If you edit one, edit the other.
 
 experience:
   - role: "Full Stack AI Engineer"
@@ -10,11 +12,10 @@ experience:
     location: "Zurich, Switzerland"
     period: "2026 – present"
     highlights:
-      - "Prototyped 20+ event-importance features across three scheduling products, including an event-topic classifier using multilingual sentence embeddings and semantic similarity matching, in Python and SQL."
-      - "Implemented topic-modelling algorithms (BERTopic, K-means) to discover event topics from historical data."
-      - "Engineered 6 dbt data models on Amazon Redshift computing meeting- and attendee-level features for event-importance scoring, validated by 30+ data-quality tests."
-      - "Built end-to-end data pipelines with Apache Airflow DAGs, connecting the dbt models to the event classification step."
-      - "Accelerated prototyping and delivery through an AI-assisted development workflow."
+      - "Designed and evaluated 20+ event-importance features across three scheduling products, including an event-topic classifier using multilingual sentence embeddings in Python and SQL."
+      - "Built a two-stage multilingual event-topic pipeline: derived a topic taxonomy from historical data using BERTopic, assigned events to it using sentence embeddings, and validated outputs through structured manual review."
+      - "Engineered 6 dbt models on Amazon Redshift to compute meeting- and attendee-level features at a production data-warehouse scale, with comparative feature analysis on representative samples."
+      - "Implemented end-to-end Apache Airflow DAGs connecting the data models to the event classification step."
 
   - role: "Postdoctoral Researcher"
     org: "Idiap Research Institute"
@@ -22,20 +23,52 @@ experience:
     location: "Martigny, Switzerland"
     period: "2023 – 2025"
     highlights:
-      - "Led the SEM24 Innosuisse project, turning business requirements into NLP systems for skill extraction from job offers and resumes, in collaboration between academia and industry."
-      - "Developed multilingual, explainable skill extraction algorithms for HR recommender systems using LLMs: semantic search, prompt engineering, text classification and generation, and Named Entity Recognition, fine-tuned with Python, PyTorch and Hugging Face."
-      - "Published five papers (RecSys in HR 2024, HICSS 2025, SwissText 2025 and 2026, Data & Policy 2026) and presented at NLP conferences, workshops and international forums."
+      - "Led the SEM24 Innosuisse project, transforming business requirements into deployed NLP systems for skill extraction from job offers and resumes through effective academia-industry collaboration."
+      - "Delivered three multilingual, explainable skill-extraction systems for HR recommendation: rule-based, semantic search, and a fine-tuned BERT model applying Named Entity Recognition (NER), text classification, and prompt engineering in PyTorch and Hugging Face, with the BERT system adopted by the industry partner."
+      - "Published research findings across 5 peer-reviewed papers (RecSys 2024, HICSS 2025, SwissText 2025–2026, Data & Policy 2026) and delivered technical talks at international NLP conferences."
+      # Cut from the CV for space; kept here, where there is room for it.
       - "Supervised a three-month internship applying NLP to social media data to analyse public perspectives on climate change."
 
-  - role: "Postgraduate Researcher"
+  - role: "PhD Researcher"
     org: "National Centre for Text Mining (NaCTeM), University of Manchester"
     url: "http://nactem.ac.uk/"
     location: "Manchester, United Kingdom"
-    period: "2020 – 2024"
+    period: "2020 – 2023"
     highlights:
-      - "Researched document-level text simplification, covering statistical analysis, generative methods and the design of evaluation metrics."
-      - "Built methods and benchmarks for lexical and sentence simplification using prompt engineering of LLMs."
-      - "Implemented multilingual methods for readability assessment, including a benchmark for Spanish."
+      - "Conducted research on document-level text simplification, including statistical analysis, generative AI models, and evaluation metrics design, resulting in 3 publications (ACL 2021, SEPLN 2021, RANLP 2023)."
+      - "Developed methods and benchmarks for lexical and sentence simplification using LLM prompt engineering, publishing 2 papers (EMNLP 2022, EMNLP 2023)."
+      - "Implemented multilingual methods for readability research, resulting in a publication (EMNLP 2022)."
+
+  - role: "Software Engineer"
+    org: "Intel Corporation"
+    url: "https://www.intel.com/content/www/us/en/corporate-responsibility/intel-in-costa-rica.html"
+    location: "Heredia, Costa Rica"
+    period: "2011 – 2020"
+    highlights:
+      - "<strong>Internal Tooling &amp; Data Automation:</strong> Developed data processing and analysis platforms, continuous integration pipelines, and code generation libraries for engineering teams to validate microprocessor designs before production, reducing manual engineering hours in Python, Perl, Java, and Ruby (9 years)."
+      - "<strong>Product Ownership &amp; Team Lead:</strong> Led a 5-person automation engineering team, aligning technical requirements with business goals (1 year); coached cross-functional teams as Scrum Master (3 years)."
+
+# Shown under "Leadership & Service" on the experience page.
+service:
+  - role: "Project Lead, HRme"
+    org: "Idiap Create Challenge (ICC)"
+    location: "Martigny, Switzerland"
+    period: "August 2025"
+    highlights:
+      - "Led and co-developed HRme, an AI-driven behavioural screening platform using conversational LLMs and speech-to-text (ASR) to automate interview evaluation via STAR scoring and O*NET competency mapping to reduce hiring bias."
+
+  - role: "Peer Reviewer"
+    org: "NLP conferences and journals"
+    period: "2022 – 2026"
+    highlights:
+      - "Reviewed for NLP4Sustain (2025), ClimateNLP (2024–2025), ACL ARR (2024–2026), BioLaySumm (2023–2024), Springer LRE (2023), and the TSAR Workshop (2022–2024)."
+
+  - role: "Co-organiser, Perspectives on AI Symposium"
+    org: "Idiap Research Institute"
+    location: "Martigny, Switzerland"
+    period: "February 2024"
+    highlights:
+      - "Organised the AI and Democracy symposium."
 
   - role: "Teaching Assistant"
     org: "University of Manchester"
@@ -54,39 +87,12 @@ experience:
           - "Computational Thinking (COMP11012)"
           - "First Year Team Project (COMP10120)"
 
-  - role: "Software Engineer"
-    org: "Intel Corporation"
-    url: "https://www.intel.com/content/www/us/en/corporate-responsibility/intel-in-costa-rica.html"
+  - role: "STEM Outreach Volunteer"
+    org: "Intel Costa Rica"
     location: "Heredia, Costa Rica"
     period: "2011 – 2020"
     highlights:
-      - "Nine years building production software, designing evaluation metrics and running statistical analysis for microprocessor quality testing, in Perl, Python, Java and Ruby."
-      - "Three years as Scrum Master, coaching cross-functional teams in manufacturing software automation."
-      - "One year as Product Owner, leading an automation team of five and defining technical requirements to align business and engineering goals."
-      - "Four years as Fault Grading Engineer, automating and standardising chipset testing methodologies using Lean Six Sigma."
-      - "STEM volunteer leader: science fair judge at local and national competitions, and workshops in schools."
-
-# Shown under "Leadership & Service" on the experience page.
-service:
-  - role: "Project Lead, HRme"
-    org: "Idiap Create Challenge (ICC)"
-    location: "Martigny, Switzerland"
-    period: "July 2025"
-    highlights:
-      - "Led and co-developed HRme, an AI-driven behavioural screening platform using conversational LLMs and speech-to-text to automate interview evaluation, with STAR scoring and O*NET competency mapping to reduce hiring bias."
-
-  - role: "Peer Reviewer"
-    org: "NLP conferences and journals"
-    period: "2022 – 2026"
-    highlights:
-      - "NLP4Sustain (2025), ClimateNLP (2024–2025), ACL ARR (2024–2026), BioLaySumm (2023–2024), Springer Language Resources and Evaluation (2023), and the TSAR Workshop (2022–2024)."
-
-  - role: "Co-organiser, Perspectives on AI Symposium"
-    org: "Idiap Research Institute"
-    location: "Martigny, Switzerland"
-    period: "February 2024"
-    highlights:
-      - "Organised the AI and Democracy symposium."
+      - "Contributed to multiple corporate STEM programs as a national science fair judge and school workshop instructor; led project proposals that secured two education grants."
 
 education:
   - degree: "PhD in Computer Science (Natural Language Processing)"
@@ -101,37 +107,54 @@ education:
     location: "Costa Rica"
     period: "2011 – 2014"
     highlights:
-      - "Honours graduation with a GPA of 92.65 (scale 0–100)."
-      - 'Project: <a href="/publication/2019-05-19-pathways">Design of a Tool for the Synthetic Assembly of Escherichia Coli K-12 MG1655 Bacteria for Biofuel Production</a>, supervised by Dr Allan Orozco.'
+      - "Graduated with honours, achieving a GPA of 92.65 over 100."
+      - 'Project: <a href="/publication/2019-05-19-pathways">Design of a Tool for the Synthetic Assembly of Escherichia Coli K-12 MG1655 Bacteria for Biofuel Production</a>, supervised by Dr. Allan Orozco.'
 
   - degree: "BSc in Computer Engineering"
     org: "Tecnológico de Costa Rica (TEC)"
     location: "Costa Rica"
     period: "2007 – 2011"
     highlights:
-      - "Graduated with a GPA of 85.85 (scale 0–100)."
-      - "Project: Protein DNA Interaction General Analyzer (ProDIGY), supervised by Dr Filip Železný."
+      - "Graduated with a GPA of 85.85 over 100."
+      - "Project: Protein DNA Interaction General Analyzer (ProDIGY), supervised by Dr. Filip Železný."
 
-# Shown as chips at the foot of the page. Delete either list to drop it.
+# Shown as chips at the foot of the experience page, mirroring the CV's four
+# Technical Skills categories in the same order.
 skills:
-  # Areas first, then the tools they are practised with.
-  - "Machine Learning"
-  - "Natural Language Processing"
-  - "Python"
-  - "SQL"
+  - "Deep Learning"
+  - "LLMs"
   - "PyTorch"
   - "Hugging Face Transformers"
-  - "LLMs"
-  - "Prompt engineering"
-  - "Semantic search"
+  - "sentence-transformers"
+  - "Feature Engineering"
+  - "Model Evaluation"
   - "RAG"
+  - "Semantic Search"
+  - "BERTopic"
+  - "Prompt Engineering"
+  - "LangChain"
+  - "Ollama"
   - "spaCy"
+  - "NLTK"
   - "scikit-learn"
+  - "MLflow"
   - "dbt"
   - "Apache Airflow"
   - "Amazon Redshift"
+  - "AWS Athena"
+  - "Apache Kafka"
+  - "pandas"
+  - "NumPy"
+  - "Python"
+  - "Bash"
+  - "SQL"
+  - "Java"
+  - "Ruby"
+  - "Perl"
   - "AWS"
   - "Docker"
+  - "Linux"
+  - "Slurm"
   - "Git"
 
 languages:

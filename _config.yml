@@ -145,7 +145,7 @@ exclude:
   # resume was on its way to being published at /Laura_Vasquez_Resume.pdf.
   # Exclude such files by name. Do not use a "*.pdf" glob, it also strips
   # files/slides/ and breaks every Slides and Poster link.
-  - Laura_Vasquez_Resume.pdf
+  - "Laura_Vasquez*"
   - CLAUDE.md
   - docker-compose.yaml
   - _config_docker.yml
