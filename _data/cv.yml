@@ -48,6 +48,14 @@ experience:
       - "<strong>Internal Tooling &amp; Data Automation:</strong> Developed data processing and analysis platforms, continuous integration pipelines, and code generation libraries for engineering teams to validate microprocessor designs before production, reducing manual engineering hours in Python, Perl, Java, and Ruby (9 years)."
       - "<strong>Product Ownership &amp; Team Lead:</strong> Led a 5-person automation engineering team, aligning technical requirements with business goals (1 year); coached cross-functional teams as Scrum Master (3 years)."
 
+  - role: "Internship Student"
+    org: "Intelligent Data Analysis (IDA) Research Lab, Czech Technical University"
+    url: "https://ida.fel.cvut.cz/"
+    location: "Prague, Czech Republic"
+    period: "Sep 2010 – Feb 2011"
+    highlights:
+      - "Worked on the implementation of ProDIGY (Protein DNA Interaction General Analyzer) and TreeLiker at the IDA Research Lab, a group working on relational machine learning for protein–DNA interaction and protein property prediction. Supervised by Prof. Filip Železný."
+
 # Shown under "Leadership & Service" on the experience page.
 service:
   - role: "Project Lead, HRme"
@@ -55,7 +63,7 @@ service:
     location: "Martigny, Switzerland"
     period: "August 2025"
     highlights:
-      - "Led and co-developed HRme, an AI-driven behavioural screening platform using conversational LLMs and speech-to-text (ASR) to automate interview evaluation via STAR scoring and O*NET competency mapping to reduce hiring bias."
+      - "Led and co-developed HRme, an AI-driven behavioral screening platform using conversational LLMs and speech-to-text (ASR) to automate interview evaluation via STAR scoring and O*NET competency mapping to reduce hiring bias."
 
   - role: "Peer Reviewer"
     org: "NLP conferences and journals"
@@ -63,12 +71,12 @@ service:
     highlights:
       - "Reviewed for NLP4Sustain (2025), ClimateNLP (2024–2025), ACL ARR (2024–2026), BioLaySumm (2023–2024), Springer LRE (2023), and the TSAR Workshop (2022–2024)."
 
-  - role: "Co-organiser, Perspectives on AI Symposium"
+  - role: "Co-organizer, Perspectives on AI Symposium"
     org: "Idiap Research Institute"
     location: "Martigny, Switzerland"
     period: "February 2024"
     highlights:
-      - "Organised the AI and Democracy symposium."
+      - "Organized the AI and Democracy symposium."
 
   - role: "Teaching Assistant"
     org: "University of Manchester"
@@ -103,20 +111,20 @@ education:
       - "Thesis: Coherence-based Document-level Text Simplification, supervised by Prof. Sophia Ananiadou."
 
   - degree: "MSc in Computer Science"
-    org: "Tecnológico de Costa Rica (TEC)"
+    org: "Costa Rica Institute of Technology (TEC)"
     location: "Costa Rica"
     period: "2011 – 2014"
     highlights:
-      - "Graduated with honours, achieving a GPA of 92.65 over 100."
-      - 'Project: <a href="/publication/2019-05-19-pathways">Design of a Tool for the Synthetic Assembly of Escherichia Coli K-12 MG1655 Bacteria for Biofuel Production</a>, supervised by Dr. Allan Orozco.'
+      - "Graduated with honors, achieving a GPA of 92.65 over 100."
+      - 'Project: <a href="/publication/2019-05-19-pathways">Design of a Tool for the Synthetic Assembly of <em>Escherichia coli</em> K-12 MG1655 Bacteria for Biofuel Production</a>, supervised by Dr. Allan Orozco.'
 
   - degree: "BSc in Computer Engineering"
-    org: "Tecnológico de Costa Rica (TEC)"
+    org: "Costa Rica Institute of Technology (TEC)"
     location: "Costa Rica"
     period: "2007 – 2011"
     highlights:
       - "Graduated with a GPA of 85.85 over 100."
-      - "Project: Protein DNA Interaction General Analyzer (ProDIGY), supervised by Dr. Filip Železný."
+      - "Project: Protein DNA Interaction General Analyzer (ProDIGY), supervised by Prof. Filip Železný."
 
 # Shown as chips at the foot of the experience page, mirroring the CV's four
 # Technical Skills categories in the same order.
@@ -128,11 +136,12 @@ skills:
   - "sentence-transformers"
   - "Feature Engineering"
   - "Model Evaluation"
-  - "RAG"
+  - "Benchmark Design"
   - "Semantic Search"
   - "BERTopic"
   - "Prompt Engineering"
-  - "LangChain"
+  - "Named Entity Recognition"
+  - "Text Classification"
   - "Ollama"
   - "spaCy"
   - "NLTK"
@@ -160,6 +169,6 @@ skills:
 languages:
   - "Spanish (native)"
   - "English (C1)"
-  - "French (B2)"
-  - "German (B1)"
+  - "French (B1–B2)"
+  - "German (A2–B1)"
   - "Portuguese (B1)"

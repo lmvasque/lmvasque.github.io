@@ -1,5 +1,5 @@
 ---
-title: "Document-level Text Simplification with Coherence Evaluation."
+title: "Document-level Text Simplification with Coherence Evaluation"
 collection: publications
 category: conferences
 permalink: /publication/2023-09-08-coherence

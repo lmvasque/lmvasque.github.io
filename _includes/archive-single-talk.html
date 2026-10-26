@@ -7,6 +7,10 @@
   now front-matter fields, shown as chips matching the publication buttons:
 
     talkurl    -> Website     slidesurl -> Slides     videourl -> Recording
+    paperurl   -> Paper       posterurl -> Poster     codeurl   -> Code
+
+  The last three exist so a talk about a published paper can point at the same
+  artefacts as its publications entry, in the same button order.
 
   The full description still lives on the talk's own page, which the title
   links to.
@@ -26,11 +30,14 @@
       </span>
     </p>
 
-    {% if post.talkurl or post.slidesurl or post.videourl %}
+    {% if post.talkurl or post.slidesurl or post.videourl or post.paperurl or post.posterurl or post.codeurl %}
       <p class="pub__actions">
         {% if post.talkurl %}<a class="btn btn--pub btn--pub-primary" href="{{ post.talkurl }}">Website</a>{% endif %}
+        {% if post.paperurl %}<a class="btn btn--pub" href="{{ post.paperurl }}">Paper</a>{% endif %}
         {% if post.slidesurl %}<a class="btn btn--pub" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+        {% if post.posterurl %}<a class="btn btn--pub" href="{{ post.posterurl }}">Poster</a>{% endif %}
         {% if post.videourl %}<a class="btn btn--pub" href="{{ post.videourl }}">Recording</a>{% endif %}
+        {% if post.codeurl %}<a class="btn btn--pub" href="{{ post.codeurl }}">Code</a>{% endif %}
       </p>
     {% endif %}
 

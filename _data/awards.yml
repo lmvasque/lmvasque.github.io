@@ -16,7 +16,7 @@
   type: certification
   date: 2021-06-01
   when: "June 2021"
-  description: "Recognised for contributions to teaching and learning support in higher education, meeting UK professional standards."
+  description: "Recognized for contributions to teaching and learning support in higher education, meeting UK professional standards."
 
 - title: "Kilburn Scholarship"
   org: "University of Manchester, United Kingdom"
@@ -25,14 +25,22 @@
   when: "December 2019"
   description: "Competitive scholarship worth approximately £114,000, covering tuition fees and an annual stipend."
 
-- title: "Train the Trainers programme"
+- title: "Train the Trainers program"
   org: "Intel, Team4Tech and CARE"
   type: grant
   date: 2018-12-01
   when: "December 2018"
   description: "Selected as Costa Rica's national representative to support out-of-school girls in Malawi. The project contributed 945 volunteer hours from a team of 8 volunteers, and a $160,000 donation to local communities."
 
-- title: "Winners of Wonder programme"
+- title: "2nd place in Spanish and 3rd place in English, TSAR-2022 Shared Task on Lexical Simplification"
+  org: "Workshop on Text Simplification, Accessibility, and Readability (TSAR-2022), EMNLP 2022"
+  url: "/publication/2022-12-08-prompt-ls"
+  type: award
+  date: 2022-12-08
+  when: "December 2022"
+  description: "Ranked second in Spanish and third in English among all participating teams with PromptLS, a prompt learning approach to lexical simplification."
+
+- title: "Winners of Wonder program"
   org: "Intel Costa Rica"
   type: grant
   date: 2018-06-01

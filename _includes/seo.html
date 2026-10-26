@@ -48,8 +48,15 @@
   <meta property="og:url" content="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
 {% endif %}
 
-{% if page.excerpt %}
-  <meta property="og:description" name="description" content="{{ seo_description }}">
+{% comment %}
+  Gated on seo_description, not page.excerpt: the list pages carry a
+  `description` in their front matter and have no excerpt, so the original
+  condition left them with no meta description at all. Emitted as two tags
+  rather than one with both attributes, so each is valid on its own.
+{% endcomment %}
+{% if seo_description %}
+  <meta name="description" content="{{ seo_description }}">
+  <meta property="og:description" content="{{ seo_description }}">
 {% endif %}
 
 {% if site.twitter.username %}

@@ -1,6 +1,7 @@
 ---
 permalink: /
 title: "About me"
+description: "Laura Vásquez-Rodríguez — Full Stack AI Engineer at Doodle in Zurich. Multilingual NLP, LLMs and machine learning; previously a postdoc at Idiap and a PhD at NaCTeM, University of Manchester."
 author_profile: true
 redirect_from: 
   - /about/
@@ -10,9 +11,11 @@ My name is Laura and I'm a **Full Stack AI Engineer** at [Doodle](https://doodle
 
 Before that, I was a **Postdoctoral Researcher** (2023–2025) at the [Idiap Research Institute](https://www.idiap.ch/en) in Martigny, Switzerland, supervised by [Lonneke van der Plas](https://sites.google.com/site/lonnekenlp/), where I led the SEM24 Innosuisse project on multilingual, explainable skill extraction for HR recommender systems.
 
-I did my **PhD** (2020–2024) at [The University of Manchester](https://www.manchester.ac.uk/) within the [National Centre of Text Mining (NaCTeM)](http://nactem.ac.uk/index.php) supervised by [Prof. Sophia Ananiadou](http://nactem.ac.uk/profile.php?member=sananiadou) and co-supervised by [Nhung T.H. Nguyen](https://nguyennth.github.io/), [Matthew Shardlow](https://www.mmu.ac.uk/staff/profile/dr-matthew-shardlow) and [Piotr Przybyła](https://home.ipipan.waw.pl/p.przybyla/). My main areas of research in Natural Language Processing (NLP) were document-level Text Simplification, Readability Assessment, Multilinguality and the Evaluation of Natural Language Generation.
+I did my **PhD** (2020–2024) at [The University of Manchester](https://www.manchester.ac.uk/) within the [National Centre for Text Mining (NaCTeM)](http://nactem.ac.uk/index.php) supervised by [Prof. Sophia Ananiadou](http://nactem.ac.uk/profile.php?member=sananiadou) and co-supervised by [Nhung T.H. Nguyen](https://nguyennth.github.io/), [Matthew Shardlow](https://www.mmu.ac.uk/staff/profile/dr-matthew-shardlow) and [Piotr Przybyła](https://home.ipipan.waw.pl/p.przybyla/). My main areas of research in Natural Language Processing (NLP) were document-level Text Simplification, Readability Assessment, Multilinguality and the Evaluation of Natural Language Generation.
 
 Earlier in my career I spent nine years (2011–2020) in industry as a **Software Engineer** at [Intel Costa Rica](https://www.intel.com/content/www/us/en/corporate-responsibility/intel-in-costa-rica.html), building internal tooling and data automation for engineering teams, and also working as a Scrum Master and Product Owner.
+
+Earlier still, my work was in computational biology: my master's thesis built [Pathways Analyzer](/publication/2019-05-19-pathways), a tool for the synthetic assembly of *Escherichia coli* for biofuel production, and I worked on relational machine learning tooling for protein–DNA interaction at the [Czech Technical University](https://ida.fel.cvut.cz/) in Prague.
 
 
 Research Interests

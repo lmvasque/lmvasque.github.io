@@ -13,7 +13,7 @@ title                    : "Laura Vásquez-Rodríguez"
 title_separator          : "-"
 name                     : &name "Laura Vásquez-Rodríguez"
 description              : &description "Full Stack AI Engineer"
-url                      : https://lmvasque.github.io/  # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
+url                      : https://lmvasque.github.io  # no trailing slash: it is joined with baseurl. the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "lmvasque/lmvasque.github.io"
 
@@ -33,7 +33,7 @@ author:
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=uz9OsTwAAAAJ&hl=es&inst=8574086807289546695&authuser=1"
+  googlescholar    : "https://scholar.google.com/citations?user=uz9OsTwAAAAJ"
   impactstory      : # URL
   orcid            : "https://orcid.org/0000-0002-7313-905X"
   semantic         : # URL
