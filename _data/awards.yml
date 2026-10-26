@@ -32,7 +32,7 @@
   when: "December 2018"
   description: "Selected as Costa Rica's national representative to support out-of-school girls in Malawi. The project contributed 945 volunteer hours from a team of 8 volunteers, and a $160,000 donation to local communities."
 
-- title: "2nd place in Spanish and 3rd place in English, TSAR-2022 Shared Task on Lexical Simplification"
+- title: "TSAR-2022 Shared Task on Lexical Simplification"
   org: "Workshop on Text Simplification, Accessibility, and Readability (TSAR-2022), EMNLP 2022"
   url: "/publication/2022-12-08-prompt-ls"
   type: award

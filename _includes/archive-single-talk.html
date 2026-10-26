@@ -26,7 +26,13 @@
     <p class="pub__meta">
       {% if post.type %}<span class="pub__tag pub__tag--talk">{{ post.type }}</span>{% endif %}
       <span class="pub__venue">
-        {{ post.venue }}{% if post.location %} &middot; {{ post.location }}{% endif %}{% if post.date %} &middot; {{ post.date | date: "%B %Y" }}{% endif %}
+        {% comment %}
+          `venue` may be a list rather than a string, for one artefact shown at
+          more than one event: each venue goes on its own line, and the shared
+          location and date follow the last one. `.first` is nil on a string in
+          Liquid and the first element on a list, so it tells the two apart.
+        {% endcomment %}
+        {% if post.venue.first %}{{ post.venue | join: "<br>" }}{% else %}{{ post.venue }}{% endif %}{% if post.location %} &middot; {{ post.location }}{% endif %}{% if post.date %} &middot; {{ post.date | date: "%B %Y" }}{% endif %}
       </span>
     </p>
 
